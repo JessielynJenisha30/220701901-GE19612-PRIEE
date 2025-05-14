@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterra: The Generationally Adaptive Chatbot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet"> <!-- New font -->
+    <link href="https://fonts.googleapis.com/css2?family=Boldonse:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Merienda&family=Playfair+Display&family=Underdog&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Merienda&family=Playfair+Display&family=Protest+Riot&family=Underdog&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #F7E7CA; /* Plain bright champagne background */
+            color: #000;
+            font-family: 'Montserrat', sans-serif; /* Apply new font */
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            opacity: 1;
+            
+            
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #000;
+            box-shadow: 0 0 15px 5px #F7E7CA;
+        }
+
+        .navbar, .hero-section, .about-section, .features-section, .footer {
+    position: relative;
+    z-index: 1;
+}
+
+
+        .navbar img {
+            height: 50px; /* Adjust logo size */
+        }
+
+        .navbar a {
+            color: #F7E7CA;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+            font-family: 'Merienda', cursive;
+        }
+
+        .navbar a:hover {
+            background-color: #FFFFFF;
+            color: #000;
+            box-shadow: 0 0 10px #FFFFFF;
+        }
+
+        .hero-section {
+            
+            text-align: center;
+            padding: 100px 20px;
+            color: black;
+            font-family: 'Boldonse', sans-serif;
+        }
+        
+
+        .hero-section h1 {
+            font-size: 2em;
+            font-family: 'Boldonse', sans-serif;
+            color: #000;
+            margin-top: 15%;
+        }
+
+        .hero-section p {
+            font-size: 1.5em;
+            margin: 20px 0 40px;
+            font-family: 'Merienda', cursive;
+        }
+
+        .cta-button {
+            padding: 15px 30px;
+            background-color: #000;
+            color: #F7E7CA;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Protest Riot', sans-serif;
+            font-size: x-large;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            box-shadow: 0 0 10px #F7E7CA; /* Initial glow effect */
+            transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+            border: 1px solid transparent; /* Transparent border initially */
+        }
+
+        .cta-button:hover {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 25px rgba(255, 255, 255, 0.5); /* Dimmed glow */
+            background-color: #FFFFFF;
+            color: #000;
+            border: 2px solid #000; /* Black outline on hover */
+        }
+
+        .about-section {
+            margin: 40px 0; /* Add spacing above and below */
+            padding: 20px;
+            background-color: #F7E7CA; /* Match background */
+            border: 2px solid #000; /* Border for confinement */
+            border-radius: 10px; /* Rounded corners */
+            max-width: 800px; /* Maximum width for the box */
+            margin-left: auto; /* Center horizontally */
+            margin-right: auto; /* Center horizontally */
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .about-title {
+    font-family: 'Underdog', cursive;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.features-section {
+    padding: 40px;
+    display: flex;
+    justify-content: space-around; /* Space out cards evenly */
+    gap: 20px;
+    flex-wrap: nowrap; /* Prevent wrapping to ensure single row */
+    overflow-x: auto; /* Allow horizontal scrolling if necessary */
+}
+
+.feature-card {
+    margin-top: 25%;
+    margin-bottom: 5%;
+    color: #000;
+    border: 2px solid #000; /* Outline for feature cards */
+    border-radius: 10px;
+    width: 250px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F7E7CA; /* Match background */
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.feature-card img {
+    width: 100%;
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover; /* Maintains aspect ratio and covers box */
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    margin-top: 10px;
+    font-size: 1.3em;
+    font-family: 'Underdog', cursive;
+}
+
+.feature-card p {
+    font-size: 0.95em;
+    margin-top: 10px;
+    font-family: 'Playfair Display', serif;
+    font-weight: bold; /* Make descriptions bold */
+}
+
+
+        .bubbles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1; /* Push it behind all content */
+}
+
+.bubble {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.4); /* Darker and less transparent */
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: fall linear infinite;
+    filter: blur(0.5px); /* Optional: slight blur for a more organic look */
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100px) scale(1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(110vh) scale(0.7);
+        opacity: 0;
+    }
+}
+
+
+
+        .footer {
+            background-color: #000;
+            color: #F7E7CA;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 15px 5px #F7E7CA;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .footer a {
+            color: #F7E7CA;
+            text-decoration: none;
+            margin: 0 10px;
+            border-radius: 5px;
+            padding: 5px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, border 0.3s ease;
+            border: 2px solid transparent; /* Transparent border initially */
+        }
+
+        .footer a:hover {
+            background-color: #FFFFFF;
+            color: #000;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Dimmed glow effect */
+            border: 2px solid #000; /* Black outline on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="bubbles-container"></div>
+    <nav class="navbar">
+        <img src=".png" alt="Alterra Logo"> <!-- Add your logo image here -->
+        <div>
+            
+            <a href="#about">About Us</a>
+            <a href="#support">Support</a>
+            <a href="login.html">Login-In</a>
+        </div>
+    </nav>
+    
+    <section class="hero-section" id="home">
+        <h1>Welcome To Alterra: The Generationally Adaptive Chatbot</h1>
+        <p>Evolving Conversation, Adapting to You</p> <!-- New slogan -->
+        <a href="chat.html" class="cta-button">Chat Now</a>
+    </section>
+
+    
+
+    <section class="features-section" id="features">
+        <div class="feature-card">
+            <img src="smart.jpg" alt="Smart Adaptation">
+            <h3>Smart Adaptation</h3>
+            <p>Learns from interactions and adjust it's tone and response based on user prefrences and behavior.</p>
+        </div>
+        <div class="feature-card">
+            <img src="slang.jpg" alt="Multi-Slang Support">
+            <h3>Multi-Slang Support</h3>
+            <p>Communicate effortlessly in multiple languages with accurate translations and contextual understanding.</p>
+        </div>
+        <div class="feature-card">
+            <img src="context.jpg" alt="Context Awareness">
+            <h3>Context Awareness</h3>
+            <p>Remembers previous interactions, ensuring more relevant and coherent conversations over time.</p>
+        </div>
+        <div class="feature-card">
+            <img src="personal.jpg" alt="Personalised Experience">
+            <h3>Personalised Experience</h3>
+            <p>Customizes responses based on user interests, slang, and preferred communication style.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Alterra. All rights reserved.</p>
+        <div>
+            <a href="#privacy-policy">Privacy Policy</a>
+            <a href="#terms-of-service">Terms of Service</a>
+        </div>
+    </footer>
+    <script>
+        const bubbleContainer = document.querySelector('.bubbles-container');
+    
+        for (let i = 0; i < 40; i++) {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+    
+            // Size and irregular shape scaling
+            const size = Math.random() * 50 + 30; // 30px to 80px
+            const scaleX = Math.random() * 1.3 + 0.7;
+            const scaleY = Math.random() * 1.3 + 0.7;
+    
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            bubble.style.left = `${Math.random() * 100}%`;
+            bubble.style.top = `-${size}px`;
+            bubble.style.transform = `scale(${scaleX}, ${scaleY})`;
+    
+            // Darker shades
+            const darkness = Math.random() * 0.3 + 0.4; // Between 0.4 and 0.7
+            bubble.style.backgroundColor = `rgba(0, 0, 0, ${darkness})`;
+    
+            // Animation timing
+            bubble.style.animationDuration = `${Math.random() * 6 + 5}s`;
+            bubble.style.animationDelay = `${Math.random() * 5}s`;
+    
+            bubbleContainer.appendChild(bubble);
+        }
+    </script>
+    
+    
+</body>
+</html>
